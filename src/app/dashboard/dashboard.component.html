@@ -1,0 +1,47 @@
+<nav class="navbar bg-dark navbar-dark header">
+  <a class="navbar-brand" style="color:white">JoHn's PiZZa</a>
+  <button class="navbar-toggler" type="button" (click)="sideNav = !sideNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+<!-- <div class="wrapper"> -->
+<div id="sidebar" [ngStyle]="{'width': sideNav? '250px' : '0'}">
+  <div class="sidebar-header">
+    <h3>Filter</h3>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" (click)="vegans('all')" value="all" class="btn btn-secondary">All</button>
+    <button type="button" (click)="vegans('veg')" value="vag" class="btn btn-success">Veg</button>
+    <button type="button" (click)="vegans('non-veg')" value="non-veg" class="btn btn-danger">Non-Veg</button>
+  </div>
+  <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (userChange)="updatePrice()"></ng5-slider>
+  <h5 class="head5">Toppings</h5>
+  <div class="checkbox" *ngFor="let topping of topping">
+    <label>
+      <input type="checkbox" [(ngModel)]="topping.selected" (change)="updateFilter('topping')" [disabled]="topping.type !=selectedType && selectedType != 'all'">{{topping.name}}
+    </label>
+  </div>
+  <h5 class="head5">Bread</h5>
+  <div class="checkbox" *ngFor="let bread of bread">
+    <label>
+      <input type="checkbox" [(ngModel)]="bread.selected" (change)="updateFilter('bread')">{{bread.name}}
+    </label>
+  </div>
+  <h5 class="head5">Cheese</h5>
+  <div class="checkbox" *ngFor="let cheese of cheese">
+    <label>
+      <input type="checkbox" [(ngModel)]="cheese.selected" (change)="updateFilter('cheese')">{{cheese.name}}
+    </label>
+  </div>
+  <div class="btn btn-success btn-sm" (click)="sideNav = !sideNav">Close</div>
+  <div class="btn btn-warning btn-sm" (click)="reset()">Reset</div>
+</div>
+<div class="container-fluid main">
+  <div class="row " [ngClass]="{'main-content': sideNav}">
+    <div class="col-lg-3 col-md-4 col-6" style="padding:0px" *ngFor="let pizza of pizzaList">
+
+      <app-items [pizza]="pizza"></app-items>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
