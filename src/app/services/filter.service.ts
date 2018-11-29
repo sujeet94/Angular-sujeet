@@ -61,23 +61,25 @@ export class FilterService {
 
   filterArrey(pizza, arr, item) {
     let arrey = [];
-    for (let i = 0; i < arr.length; i++) {
-      let top = pizza.filter(ele => {
-        if (item == "topping") {
-          return ele.topping == arr[i];
-        }
-        if (item == "bread") {
-          return ele.bread == arr[i];
-        }
-        if (item == "cheese") {
-          return ele.cheese == arr[i];
-        }
-      });
-      arrey = arrey.concat(top);
-    }
-    if (arrey.length > 0)
+    if (arr.length > 0) {
+      for (let i = 0; i < arr.length; i++) {
+        let top = pizza.filter(ele => {
+          if (item == "topping") {
+            return ele.topping == arr[i];
+          }
+          if (item == "bread") {
+            return ele.bread == arr[i];
+          }
+          if (item == "cheese") {
+            return ele.cheese == arr[i];
+          }
+        });
+        arrey = arrey.concat(top);
+      }
       pizza = arrey;
-    return pizza
+    }
+
+    return pizza;
   };
 
 }
