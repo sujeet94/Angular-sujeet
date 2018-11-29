@@ -4,13 +4,18 @@ import { PizzaService } from "../services/pizza.service";
 import { FilterService } from "../services/filter.service";
 import { PizzaModel } from '../models/pizza.model';
 import { Options, ChangeContext } from 'ng5-slider';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
-  public data: any;
+
+  public pizzaList: PizzaModel[] = [];
+  private allPizza: PizzaModel[];
+  private data: any;
   topping = [];
   bread = [];
   cheese = [];
@@ -32,8 +37,8 @@ export class DashboardComponent implements OnInit {
   sideNav: boolean = false;
 
   constructor(private httpService: HttpService, private pizzaService: PizzaService, private filter: FilterService) { }
-  public pizzaList: PizzaModel[];
-  private allPizza: PizzaModel[];
+
+
   ngOnInit() {
     console.log(window.innerWidth);
     if (window.innerWidth > 767)
@@ -56,6 +61,7 @@ export class DashboardComponent implements OnInit {
     console.log(type);
     this.selectedType = type;
     this.filterObj.type = type;
+    this.filterObj.topping = [];
     this.topping.forEach(element => {
       element.selected = false;
     });
@@ -97,6 +103,7 @@ export class DashboardComponent implements OnInit {
   }
   //  RESET
   reset() {
+    this.selectedType = 'all';
     this.filterObj = {
       "type": "all",
       "price": [100, 600],

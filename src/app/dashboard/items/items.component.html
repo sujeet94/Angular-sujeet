@@ -1,10 +1,15 @@
 <div class="card">
-  <img class="card-img-top" src="../assets/pizza.png">
-  <div class="card-body">
-    <div class="card-title">{{pizza.topping}} {{pizza.bread}} {{pizza.cheese}}</div>
-    <p class="card-text"> {{pizza.type}}</p>
+  <img class="card-img-top  image" [src]="pizza.image">
+  <div class="icons">
+    <img [src]="pizza.type == 'veg'? 'assets/icons/veg.png':'assets/icons/non-veg.png'">
+  </div>
+  <div class="card-body " style="padding:5px;">
+    <div class="card-title">{{pizza.topping |titlecase}} </div>
+    {{pizza.bread |titlecase}}
+    <p class="card-text"> {{pizza.cheese |titlecase}}</p>
+    <!-- <p class="card-text"> </p> -->
     <div>Rs.{{pizza.price}}
-      <a href="#" class="btn btn-primary">Buy</a>
+      <a class="btn btn-primary" (click)="buyPizza()">Buy</a>
     </div>
   </div>
 </div>

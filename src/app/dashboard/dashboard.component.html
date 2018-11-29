@@ -1,7 +1,8 @@
 <nav class="navbar bg-dark navbar-dark header">
   <a class="navbar-brand" style="color:white">JoHn's PiZZa</a>
   <button class="navbar-toggler" type="button" (click)="sideNav = !sideNav">
-    <span class="navbar-toggler-icon"></span>
+    <!-- <span class="navbar-toggler-icon"></span> -->
+    <img src="assets/icons/filter.png" height="30px">
   </button>
 </nav>
 <!-- <div class="wrapper"> -->
@@ -37,9 +38,8 @@
   <div class="btn btn-warning btn-sm" (click)="reset()">Reset</div>
 </div>
 <div class="container-fluid main">
-  <div class="row " [ngClass]="{'main-content': sideNav}">
+  <div class="row" [ngClass]="{'main-content': sideNav}">
     <div class="col-lg-3 col-md-4 col-6" style="padding:0px" *ngFor="let pizza of pizzaList">
-
       <app-items [pizza]="pizza"></app-items>
     </div>
   </div>

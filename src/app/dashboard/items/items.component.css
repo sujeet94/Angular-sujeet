@@ -1,0 +1,9 @@
+.icons{
+    text-align:right;
+    padding:0px 2px;
+}
+.image{
+    max-height : 300px;
+    max-width : 300px;
+     align-self: center;
+}

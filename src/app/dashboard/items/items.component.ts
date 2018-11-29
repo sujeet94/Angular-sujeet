@@ -13,4 +13,7 @@ export class ItemsComponent implements OnInit {
   ngOnInit() {
   }
 
+  buyPizza() {
+    alert(`Your order ${JSON.stringify(this.pizza)}`)
+  }
 }
