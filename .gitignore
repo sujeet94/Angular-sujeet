@@ -4,8 +4,6 @@
 /dist
 /tmp
 /out-tsc
-/pakage-lock.json
-
 # dependencies
 /node_modules
 
